@@ -1,0 +1,40 @@
+version: '3.1'
+services: 
+  web:
+    restart: always
+    build: .
+    container_name: casa-web
+    volumes: 
+      - "./:/var/www/"
+      # - .docker/php/php.ini /usr/local/etc/php/"
+    depends_on: 
+      - db
+      
+  db:
+    image: mariadb
+    restart: always
+    container_name: casa-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: teste123
+      MYSQL_USER: casa.user
+      MYSQL_PASSWORD: casa.pass
+      MYSQL_DATABASE: casa_arquivo
+    volumes: 
+    - "./.docker/dbdata:/var/lib/mysql"
+
+  nginx:
+    build: ./.docker/nginx
+    restart: always
+    container_name: casa-nginx
+    ports:
+      - "80:80"
+    volumes: 
+      - ./:/var/www
+    depends_on: 
+      - web
+
+
+  
+
