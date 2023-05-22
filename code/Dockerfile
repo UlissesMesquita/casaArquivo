@@ -45,10 +45,10 @@ RUN ln -s public html
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 
-#COPY ./ /var/www
+COPY ./ /var/www
 
-#RUN chmod -R 777 /var/www/storage
-#RUN php artisan storage:link
+RUN chmod -R 777 /var/www/storage
+RUN php artisan storage:link
 
 EXPOSE 9000
 

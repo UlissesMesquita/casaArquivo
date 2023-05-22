@@ -17,7 +17,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: teste123
+      MYSQL_ROOT_PASSWORD: casa.pass
       MYSQL_USER: casa.user
       MYSQL_PASSWORD: casa.pass
       MYSQL_DATABASE: casa_arquivo
