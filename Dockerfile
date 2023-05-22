@@ -52,4 +52,5 @@ RUN php artisan storage:link
 
 EXPOSE 9000
 
+
 ENTRYPOINT [ "php-fpm" ]
